@@ -3,6 +3,8 @@ package main
 import (
 	"encoding/json"
 	"net/http"
+
+	"github.com/gorilla/mux"
 )
 
 func decodeRequestBody(req *http.Request, entity interface{}) error {
@@ -18,4 +20,9 @@ func writeJsonResponse(w http.ResponseWriter, res interface{}, statusCode int) {
 
 func errorHandler(w http.ResponseWriter, err error, statusCode int) {
 	http.Error(w, err.Error(), statusCode)
+}
+
+func extractQueryParam(r *http.Request, param string) string {
+	queryParams := mux.Vars(r)
+	return queryParams[param]
 }
