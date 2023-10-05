@@ -26,7 +26,12 @@ func CreateUser(w http.ResponseWriter, r *http.Request) {
 
 // GetUsers returns a list of all users.
 func GetUsers(w http.ResponseWriter, r *http.Request) {
-	// Get users logic
+	users, err := fetchUsers()
+	if err != nil {
+		errorHandler(w, err, http.StatusInternalServerError)
+		return
+	}
+	writeJsonResponse(w, users, http.StatusCreated)
 }
 
 // GetUserById returns a specific user by ID.
