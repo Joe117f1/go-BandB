@@ -6,3 +6,5 @@ type User struct {
 	UserName string `json:"userName"`
 	Email    string `json:"email"`
 }
+
+type Users = []User
