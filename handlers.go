@@ -6,8 +6,8 @@ import (
 	"net/http"
 )
 
-// CreateUserHandler handles the creation of a new user
-func CreateUserHandler(w http.ResponseWriter, r *http.Request) {
+// CreateUser handles the creation of a new user
+func CreateUser(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("CreateUser run")
 	var newUser User
 

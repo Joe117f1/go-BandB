@@ -11,7 +11,7 @@ func main() {
 	router := mux.NewRouter()
 
 	// Define routes for CRUD operations on users.
-	router.HandleFunc("/users", CreateUserHandler).Methods("POST")
+	router.HandleFunc("/users", CreateUser).Methods("POST")
 	router.HandleFunc("/users", GetUsers).Methods("GET")
 	router.HandleFunc("/users/{id}", GetUser).Methods("GET")
 	router.HandleFunc("/users/{id}", UpdateUser).Methods("PUT")
