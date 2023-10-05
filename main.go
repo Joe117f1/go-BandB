@@ -13,7 +13,7 @@ func main() {
 	// Define routes for CRUD operations on users.
 	router.HandleFunc("/users", CreateUser).Methods("POST")
 	router.HandleFunc("/users", GetUsers).Methods("GET")
-	router.HandleFunc("/users/{id}", GetUser).Methods("GET")
+	router.HandleFunc(fmt.Sprintf("/users/{%s}", id), GetUserById).Methods("GET")
 	router.HandleFunc("/users/{id}", UpdateUser).Methods("PUT")
 	router.HandleFunc("/users/{id}", DeleteUser).Methods("DELETE")
 

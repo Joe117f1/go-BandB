@@ -4,6 +4,8 @@ import (
 	"errors"
 	"fmt"
 	"net/http"
+
+	"github.com/gorilla/mux"
 )
 
 // CreateUser handles the creation of a new user
@@ -34,8 +36,19 @@ func GetUsers(w http.ResponseWriter, r *http.Request) {
 }
 
 // GetUser returns a specific user by ID.
-func GetUser(w http.ResponseWriter, r *http.Request) {
-	// Get user by ID logic
+func GetUserById(w http.ResponseWriter, r *http.Request) {
+	queryParams := mux.Vars(r)
+	userId := queryParams[id]
+	var searchedUser User
+
+	for _, user := range users {
+		if user.ID == userId {
+			searchedUser = user
+			break
+		}
+	}
+
+	writeJsonResponse(w, searchedUser, http.StatusOK)
 }
 
 // UpdateUser handles updating an existing user.
