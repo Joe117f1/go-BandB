@@ -2,13 +2,11 @@ package main
 
 import (
 	"errors"
-	"fmt"
 	"net/http"
 )
 
 // CreateUser handles the creation of a new user
 func CreateUser(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("CreateUser run")
 	var newUser User
 
 	err := decodeRequestBody(r, &newUser)
@@ -23,8 +21,6 @@ func CreateUser(w http.ResponseWriter, r *http.Request) {
 		errorHandler(w, errors.New("could not save data"), http.StatusInternalServerError)
 		return
 	}
-
-	fmt.Println("users: ", users)
 	writeJsonResponse(w, newUser, http.StatusCreated)
 }
 
@@ -41,7 +37,6 @@ func GetUserById(w http.ResponseWriter, r *http.Request) {
 		errorHandler(w, err, http.StatusNotFound)
 		return
 	}
-
 	writeJsonResponse(w, user, http.StatusOK)
 }
 
