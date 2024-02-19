@@ -2,7 +2,7 @@ package main
 
 import "errors"
 
-// insertUser insert one ruser record to the db
+// insertUser insert one user record to the db
 func insertUser(user User) error {
 	// insert to db logic...
 	users = append(users, user)
