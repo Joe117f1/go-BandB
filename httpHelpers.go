@@ -15,7 +15,6 @@ func decodeRequestBody(req *http.Request, entity interface{}) error {
 func writeJsonResponse(w http.ResponseWriter, res interface{}, statusCode int) {
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(res)
-	w.WriteHeader(statusCode)
 }
 
 func errorHandler(w http.ResponseWriter, err error, statusCode int) {
